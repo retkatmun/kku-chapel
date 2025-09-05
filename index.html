@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KKU Chapel</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
@@ -15,14 +16,14 @@
         <!-- Navbar -->
         <nav class="hero-nav">
             <a href="#home" class="hero-logo">
-                <img src="https://i.pinimg.com/736x/f7/63/03/f7630358b6c2e058381a34be8d2736d8.jpg" alt="KKU Chapel Logo">
+                <img src="/image/newlogo.png" alt="KKU Chapel Logo">
             </a>
 
             <!-- Hamburger Button -->
             <button class="menu-toggle" aria-label="Toggle Menu">&#9776;</button>
 
             <ul class="hero-nav-links">
-                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#home" >Home</a></li>
                 <li><a href="#sermons">Sermons</a></li>
                 <li><a href="#events">Events</a></li>
                 <li><a href="#ministries">Ministries</a></li>
@@ -87,6 +88,54 @@
         </div>
     </section>
 
+    <section id="counseling">
+    <div class="container">
+      <h2 class="section-title">Counseling Services</h2>
+
+      <div class="counseling-grid">
+
+        <!-- Academic Counseling -->
+        <div class="counseling-card">
+          <div class="counseling-header">
+            <h3>Academic Counseling</h3>
+          </div>
+          <div class="counseling-body">
+            <p>Get help with study habits, course choices, and academic challenges.</p>
+            <p><strong>Available:</strong> Mon – Fri</p>
+            <p><strong>Time:</strong> 10:00 AM – 4:00 PM</p>
+            <button>Book Session</button>
+          </div>
+        </div>
+
+        <!-- Career Guidance -->
+        <div class="counseling-card">
+          <div class="counseling-header">
+            <h3>Career Guidance</h3>
+          </div>
+          <div class="counseling-body">
+            <p>Plan your career path and discover opportunities for growth.</p>
+            <p><strong>Available:</strong> Tue & Thu</p>
+            <p><strong>Time:</strong> 2:00 PM – 5:00 PM</p>
+            <button>Book Session</button>
+          </div>
+        </div>
+
+        <!-- Spiritual Counseling -->
+        <div class="counseling-card">
+          <div class="counseling-header">
+            <h3>Spiritual Counseling</h3>
+          </div>
+          <div class="counseling-body">
+            <p>Talk to a counselor about faith, prayer, and personal growth.</p>
+            <p><strong>Available:</strong> Sunday</p>
+            <p><strong>Time:</strong> After Service</p>
+            <button>Book Session</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
     <!-- Gallery -->
     <section id="gallery">
         <h2>Gallery</h2>
@@ -131,7 +180,6 @@
             </div>
         </div>
     </section>
-
 
     <!-- Donation -->
     <section id="donate">
@@ -199,23 +247,53 @@
     </section>
     <!-- WhatsApp Floating Button -->
     <a href="https://wa.me/2348000000000" class="whatsapp-float" target="_blank" aria-label="Chat with us on WhatsApp">
-        <img src="whatsapp.png" alt="WhatsApp">
+        <img src="/image/whatsapp.png" alt="WhatsApp">
     </a>
 
     <!-- Footer -->
-    <footer>
-        <p>&copy; 2025 KKU Chapel. All rights reserved.</p>
-    </footer>
+   <footer class="social-footer">
+  <h3>Connect With Us</h3>
+  <div class="social-links">
+    <a href="#"><i class="fa-brands fa-facebook"></i></a>
+    <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+    <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+  </div>
+  <p class="copyright">© 2025 Your Website Name. All Rights Reserved.</p>
+</footer>
 
-    <script>
-        const menuToggle = document.querySelector(".menu-toggle");
-        const navLinks = document.querySelector(".hero-nav-links");
 
-        menuToggle.addEventListener("click", () => {
-            navLinks.classList.toggle("show");
-            menuToggle.innerHTML = navLinks.classList.contains("show") ? "&times;" : "&#9776;";
-        });
-    </script>
+   <script>
+  // ===== Mobile Menu Toggle =====
+  const menuToggle = document.querySelector(".menu-toggle");
+  const navLinks = document.querySelector(".hero-nav-links");
+
+  menuToggle.addEventListener("click", () => {
+    navLinks.classList.toggle("show");
+    menuToggle.innerHTML = navLinks.classList.contains("show") ? "&times;" : "&#9776;";
+  });
+
+  // ===== Active Link on Scroll =====
+  window.addEventListener("scroll", () => {
+    let sections = document.querySelectorAll("section"); // all page sections
+    let navItems = document.querySelectorAll(".hero-nav-links a"); // all nav links
+
+    sections.forEach(section => {
+      let top = window.scrollY;
+      let offset = section.offsetTop - 150;
+      let height = section.offsetHeight;
+      let id = section.getAttribute("id");
+
+      if (top >= offset && top < offset + height) {
+        navItems.forEach(link => link.classList.remove("active"));
+        let activeLink = document.querySelector(".hero-nav-links a[href*=" + id + "]");
+        if (activeLink) {
+          activeLink.classList.add("active");
+        }
+      }
+    });
+  });
+</script>
 
 </body>
 
